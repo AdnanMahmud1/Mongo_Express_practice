@@ -1,4 +1,4 @@
 
 1. To initialize Project
 npm init -y
-npm i nodemon, mongoose
+npm i nodemon, mongoose, esm
