@@ -14,3 +14,21 @@ export const getAllUsers = async () => {
   const users = await User.find();
   return users;
 };
+
+export const update = async (user) => {
+  const id = user._id;
+  const User = models.User;
+  let model = await User.findById(id);
+  if (model) {
+    model.username = user.username;
+    model.save();
+    return model;
+  }
+  return null;
+};
+
+export const deleteById = async (id) => {
+  const User = models.User;
+  const result = User.deleteOne({ _id: id });
+  return result;
+};
