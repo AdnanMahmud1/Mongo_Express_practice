@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import {
   saveUser,
   getAllUsers,
@@ -22,16 +22,25 @@ const putHandler = async (req, res) => {
   const user = await update(body);
   res.status(200).send(user._id);
 };
-const deleteHandler = async (req, res) => {
-  const id = req.query.id;
-  console.log(id);
-  const user = await deleteById(id);
-  res.status(200).send("user deleted");
+
+const deleteHandler = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const result = await deleteById(id);
+    if (result instanceof Error) {
+      return next(result, req, res);
+    } else {
+      res.status(200).send("user deleted");
+    }
+  } catch (error) {
+    return next(error, req, res);
+  }
 };
+
 router.get("/", getHandler);
 router.post("/", postHandler);
 router.put("/", putHandler);
-router.delete("/", deleteHandler);
+router.delete("/:id", deleteHandler);
 
 const configure = (app) => {
   app.use("/users", router);

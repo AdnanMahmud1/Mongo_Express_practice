@@ -1,4 +1,5 @@
 import models from "../models";
+import { NotFound } from "../utils/errors";
 
 export const saveUser = async (user) => {
   const model = new models.User({
@@ -29,6 +30,12 @@ export const update = async (user) => {
 
 export const deleteById = async (id) => {
   const User = models.User;
-  const result = User.deleteOne({ _id: id });
-  return result;
+  let model = await User.findById(id);
+  if(model){
+    const result = User.deleteOne({ _id: id });
+    return result;
+  }
+  return new NotFound(`User not found of id: ${id}`)
+
+
 };
