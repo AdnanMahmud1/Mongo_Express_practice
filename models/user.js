@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import uniqueValidator from "mongoose-unique-validator"
 
 // schema
 const userSchema = new mongoose.Schema(
@@ -9,7 +10,7 @@ const userSchema = new mongoose.Schema(
 )
 
 // referrence
-
+userSchema.plugin(uniqueValidator);
 const User = mongoose.model("user", userSchema);
 
 export default User;
