@@ -19,3 +19,5 @@ Install = npm i jest supertest superagent @babel/core @babel/preset-env babel-je
 // Error parsing error:
 solution:
 jest --init
+
+jest --force-exit  // for no block

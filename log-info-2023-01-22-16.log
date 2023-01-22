@@ -1,0 +1,1 @@
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"correlationId\":\"1674383671906\",\"reqruestBody\":{}}","meta":{"req":{"headers":{"accept-encoding":"gzip, deflate","connection":"close","host":"127.0.0.1:9601","x-correlation-id":"1674383671906"},"httpVersion":"1.1","method":"GET","originalUrl":"/users","query":{},"url":"/users"},"res":{"statusCode":200},"responseTime":21}}

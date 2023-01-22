@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.21% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/23</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.21% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/23</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -164,14 +164,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -179,11 +179,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -249,27 +249,27 @@ const app = express();
 &nbsp;
 app.use(express.json());
 &nbsp;
-const processRequest = <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-  let correlationId = <span class="cstat-no" title="statement not covered" >req.headers["x-correlation-id"];</span>
-<span class="cstat-no" title="statement not covered" >  if (!correlationId) {</span>
-<span class="cstat-no" title="statement not covered" >    correlationId = Date.now().toString();</span>
-<span class="cstat-no" title="statement not covered" >    req.headers["x-correlation-id"] = correlationId;</span>
+const processRequest = async (req, res, next) =&gt; {
+  let correlationId = req.headers["x-correlation-id"];
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (!correlationId) {
+    correlationId = Date.now().toString();
+    req.headers["x-correlation-id"] = correlationId;
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  res.set("x-correlation-id", correlationId);</span>
-<span class="cstat-no" title="statement not covered" >  return next();</span>
+  res.set("x-correlation-id", correlationId);
+  return next();
 };
 &nbsp;
 app.use(processRequest);
 &nbsp;
 connectWithDb();
 &nbsp;
-const getMessage = <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  let obj = <span class="cstat-no" title="statement not covered" >{</span>
+const getMessage = (req, res) =&gt; {
+  let obj = {
     correlationId: req.headers["x-correlation-id"],
     reqruestBody: req.body,
   };
-<span class="cstat-no" title="statement not covered" >  return JSON.stringify(obj);</span>
+  return JSON.stringify(obj);
 };
 &nbsp;
 const fileInfoTransport = new winston.transports.DailyRotateFile({
@@ -328,7 +328,7 @@ export default app;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-22T09:43:09.506Z
+                at 2023-01-22T10:34:31.965Z
             </div>
         <script src="../prettify.js"></script>
         <script>
