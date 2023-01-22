@@ -6,7 +6,7 @@ export const handleErrors = async (err, req, res, next) => {
     code = err.getCode();
     //return res.status(code).json({ name: err.name, message: err.message });
   }
-  let correlationId = req.header["x-correlation-id"];
+  let correlationId = req.headers["x-correlation-id"];
   return res.status(code).json({
     correlationId: correlationId,
     message: err.message,
