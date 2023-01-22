@@ -13,7 +13,8 @@ const options = {
 export const connectWithDb = () => {
   mongoose.set("strictQuery", true).connect(uri, options, (err, db) => {
     if (err) {
-      console.error(err);
-    } else console.log("Connection established");
+     throw err;
+    }
+    // else console.log("Connection established");
   });
 };

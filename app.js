@@ -8,7 +8,6 @@ import "winston-daily-rotate-file";
 import winstonMongo from "winston-mongodb";
 //import { ElasticsearchTransport } from "winston-elasticsearch";
 
-const port = 3000;
 const app = express();
 
 app.use(express.json());
@@ -59,11 +58,7 @@ const mongoErrorTransport = new winston.transports.MongoDB({
 //const exTransport = new ElasticsearchTransport(elasticSearchOptions);
 
 const infoLogger = expressWinston.logger({
-  transports: [
-    new winston.transports.Console(),
-    fileInfoTransport,
-
-  ],
+  transports: [new winston.transports.Console(), fileInfoTransport],
   format: winston.format.combine(
     winston.format.colorize(),
     winston.format.json()
@@ -77,7 +72,6 @@ const errorLogger = expressWinston.errorLogger({
     new winston.transports.Console(),
     fileErrorTransport,
     mongoErrorTransport,
-
   ],
 });
 
@@ -89,11 +83,4 @@ app.use(errorLogger);
 
 app.use(handleErrors);
 
-app.listen(port, () => {
-  console.log(port);
-});
-
-// 3 layer architechture
-//  1. userController = Controller Layer: process the http resquests
-//  2. UserService = Service Layer: process the object and send to data layer
-//  3. Mongoose wrapper = Data Layer(ORM Layer): process the data and get/set to database
+export default app;

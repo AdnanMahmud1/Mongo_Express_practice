@@ -8,3 +8,14 @@ Logger:
 
 Info Logger: Before Route
 Error Logger: After Route Configuration
+
+
+Test library:
+1. JEST
+2. super library
+
+Install = npm i jest supertest superagent @babel/core @babel/preset-env babel-jest
+
+// Error parsing error:
+solution:
+jest --init
