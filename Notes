@@ -14,7 +14,7 @@ Test library:
 1. JEST
 2. super library
 
-Install = npm i jest supertest superagent @babel/core @babel/preset-env babel-jest
+Install = npm i dotenv jest supertest superagent @babel/core @babel/preset-env babel-jest --save-dev
 
 // Error parsing error:
 solution:
