@@ -28,6 +28,5 @@ describe("user controller test suite", () => {
 
     expect(response.body).not.toBeNull();
     expect(response.status).toBe(200);
-    console.log("🚀 ~ file: app.test.js:30 ~ test ~ response", response.body);
   });
 });
