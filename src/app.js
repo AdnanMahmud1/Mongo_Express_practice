@@ -7,7 +7,6 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const app = express();
-console.log(process.env.ENVIRONMENT);
 
 app.use(express.json());
 
