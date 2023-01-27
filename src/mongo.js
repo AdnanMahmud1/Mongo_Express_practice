@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-export const uri = "mongodb://localhost:27017/productfinder";
+//export const uri = "mongodb://localhost:27017/productfinder";
+export const uri = "mongodb://0.0.0.0:27017/productfinder";
 
 const options = {
   autoIndex: false, // Don't build indexes

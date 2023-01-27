@@ -16,6 +16,7 @@ const mongoErrorTransport = (uri) =>
   new winston.transports.MongoDB({
     db: uri,
     metaKey: "meta",
+    //tryReconnect: true,
   });
 
 // const elasticSearchOptions = {
