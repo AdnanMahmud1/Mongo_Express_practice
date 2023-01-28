@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.33% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/24</span>
+                <span class='fraction'>15/24</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.86% </span>
+                <span class="strong">65.21% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/23</span>
+                <span class='fraction'>15/23</span>
             </div>
         
             
@@ -116,35 +116,35 @@
 <a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -165,14 +165,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { GeneralError, BadRequest } from "./../utils/errors";
 &nbsp;
-export const handleErrors = <span class="fstat-no" title="function not covered" >as</span>ync (err, req, res, next) =&gt; {
-  let code = <span class="cstat-no" title="statement not covered" >500;</span>
-<span class="cstat-no" title="statement not covered" >  if (err instanceof GeneralError) {</span>
-<span class="cstat-no" title="statement not covered" >    code = err.getCode();</span>
+export const handleErrors = async (err, req, res, next) =&gt; {
+  let code = 500;
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (err instanceof GeneralError) {
+    code = err.getCode();
     //return res.status(code).json({ name: err.name, message: err.message });
   }
-  let correlationId = <span class="cstat-no" title="statement not covered" >req.headers["x-correlation-id"];</span>
-<span class="cstat-no" title="statement not covered" >  return res.status(code).json({</span>
+  let correlationId = req.headers["x-correlation-id"];
+  return res.status(code).json({
     correlationId: correlationId,
     message: err.message,
   });
@@ -190,11 +190,11 @@ export const handleRequest = async (req, res, next) =&gt; {
 };
 &nbsp;
 export const handleValidation = (validate) =&gt; {
-  return (req, res, next) =&gt; {
-    const result = validate(req.body);
-    const isValid = result.error == null;
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (isValid) {
-      return next();
+  return <span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {
+    const result = <span class="cstat-no" title="statement not covered" >validate(req.body);</span>
+    const isValid = <span class="cstat-no" title="statement not covered" >result.error == null;</span>
+<span class="cstat-no" title="statement not covered" >    if (isValid) {</span>
+<span class="cstat-no" title="statement not covered" >      return next();</span>
     }
     const { details } = <span class="cstat-no" title="statement not covered" >result.error;</span>
     const messages = <span class="cstat-no" title="statement not covered" >details.map(<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >e.message)</span>;</span>
@@ -220,7 +220,7 @@ export const handleValidation = (validate) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-27T11:04:15.939Z
+                at 2023-01-28T10:38:11.765Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -8,6 +8,7 @@ import {
 } from "../services/userService";
 import validators from "../models/view-models";
 import { handleValidation } from "./../middlewares";
+import { NotFound } from "../utils/errors";
 
 const router = express.Router();
 
@@ -23,7 +24,11 @@ const getByIdHandler = async (req, res, next) => {
   try {
     const id = req.params.id;
     const user = await getUserById(id);
-    res.status(200).send(user);
+    if (user) {
+      res.status(200).send();
+    } else {
+      throw new NotFound("user not found by the id: " +id);
+    }
   } catch (error) {
     return next(error, req, res);
   }

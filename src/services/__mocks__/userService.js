@@ -2,7 +2,7 @@ import models from "../../models";
 
 let users = [
   {
-    _id: "01",
+    id: "1",
     usename: "testUser 001",
   },
 ];
@@ -21,4 +21,13 @@ export const saveUser = async (user) => {
 export const getUserById = async (nid) => {
   let model = users.find((x) => x.id === nid);
   return model;
+};
+
+export const update = async (user) => {
+  users[0].username = user.username;
+  return users[0];
+};
+
+export const deleteById = async (id) => {
+  users = [];
 };
