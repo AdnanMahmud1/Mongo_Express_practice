@@ -21,3 +21,10 @@ solution:
 jest --init
 
 jest --force-exit  // for no block
+
+npm i swagger-ui-express
+
+
+ElasticSearch:
+
+docker pull elasticsearch

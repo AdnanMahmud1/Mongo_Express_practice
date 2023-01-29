@@ -3,6 +3,8 @@ import configureRoutes from "./controllers";
 import { infoLogger } from "./logger";
 import { handleErrors, handleRequest } from "./middlewares/index";
 import dotenv from "dotenv";
+const swaggerUI = require("swagger-ui-express");
+
 dotenv.config();
 
 const app = express();
@@ -16,4 +18,6 @@ configureRoutes(app);
 
 app.use(handleErrors);
 
+const swaggerDocument = require("./swagger.json");
+app.use("/api.docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 export default app;

@@ -50,3 +50,4 @@ describe("userController test suite", () => {
     expect(body.message).toBe("user not found by the id: 1");
   });
 });
+  
