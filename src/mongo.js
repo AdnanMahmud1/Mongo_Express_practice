@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
+const HOST = process.env.MONGODB_HOST || "0.0.0.0";
+console.log("process.env.MONGODB_HOST - ", HOST);
+
+export const uri = `mongodb://${HOST}:27017/productfinder`;
 //export const uri = "mongodb://localhost:27017/productfinder";
-export const uri = "mongodb://0.0.0.0:27017/productfinder";
+//export const uri = "mongodb://0.0.0.0:27017/productfinder";
 
 const options = {
   autoIndex: false, // Don't build indexes
